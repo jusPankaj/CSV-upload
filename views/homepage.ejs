@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV Upload API</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center mt-4">Upload Files</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="custom-file">
+              <!-- Updated label with id for associating with input -->
+              <input
+                type="file"
+                class="custom-file-input"
+                id="fileInput"
+                name="csv"
+                accept=".csv"
+                onchange="updateLabel(this)"
+              />
+              <label class="custom-file-label" for="fileInput"
+                >Choose file</label
+              >
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-3">
+              Upload
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table section -->
+    <div class="container mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% files.forEach(function(file) { %>
+          <tr>
+            <td><%= file.fileName %></td>
+            <td>
+              <a href="/csv/<%= file._id %>">View</a>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Function to update label text with selected file name
+      function updateLabel(input) {
+        const label = input.nextElementSibling;
+        const fileName = input.files[0].name;
+        label.innerText = fileName;
+      }
+    </script>
+  </body>
+</html>
