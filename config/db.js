@@ -24,7 +24,7 @@ const connectDb = async () => {
   try {
     console.log("Attempting to connect to the database...");
     console.log("Connection string:", process.env.CONNECTION_STRING);
-    const connect = await mongoose.connect("mongodb+srv://kppankaj1843:j9TT2npFYn82iWXL@cluster0.or3ipla.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+    const connect = await mongoose.connect("mongodb://localhost:27017/csv", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
