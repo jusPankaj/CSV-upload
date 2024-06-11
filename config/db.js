@@ -17,17 +17,18 @@
 
 // module.exports = connectDb;
 
-
 const mongoose = require("mongoose");
 
 const connectDb = async () => {
   try {
     console.log("Attempting to connect to the database...");
-    console.log("Connection string:", process.env.CONNECTION_STRING);
-    const connect = await mongoose.connect(process.env.CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const connect = await mongoose.connect(
+      "mongodb+srv://kppankaj1843:j9TT2npFYn82iWXL@cluster0.or3ipla.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
     console.log(
       "Database connected:",
       connect.connection.host,
