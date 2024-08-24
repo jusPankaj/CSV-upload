@@ -22,6 +22,7 @@ const mongoose = require("mongoose");
 const connectDb = async () => {
   try {
     console.log("Attempting to connect to the database...");
+    console.log("Connection string:", process.env.CONNECTION_STRING);
     const connect = await mongoose.connect(process.env.CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
